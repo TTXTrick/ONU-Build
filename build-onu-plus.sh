@@ -139,6 +139,13 @@ EOF
 # ---------- BUILD ----------
 echo "[7/8] Building the ONU+ ISO..."
 sudo lb clean
+
+# --- ADDED: Re-run config after cleaning ---
+sudo lb config --distribution "$DISTRO" \
+           --debian-installer live \
+           --archive-areas "main contrib non-free-firmware"
+# ------------------------------------------
+
 sudo lb build
 
 # ---------- FINALIZE ----------
